@@ -1,2 +1,2 @@
 export { default as images } from './images';
-export { default as sections } from './data';
+export { default as data } from './data';

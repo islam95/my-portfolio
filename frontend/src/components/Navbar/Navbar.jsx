@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { HiCode, HiMenu, HiX } from 'react-icons/hi';
 import { motion } from 'framer-motion';
-import { sections } from '../../constants';
+import { data } from '../../constants';
 
 import './Navbar.scss';
 
@@ -16,7 +16,7 @@ const Navbar = () => {
         <HiCode />
       </div>
       <ul className="app__navbar-links">
-        {sections.map((item) => (
+        {data.sections.map((item) => (
           <li className="app__flex p-text" key={`link-${item}`}>
             <div className="dot" />
             <a href={`#${item}`}>{item}</a>
@@ -32,7 +32,7 @@ const Navbar = () => {
             <HiX onClick={() => setToggle(false)} />
 
             <ul>
-              {sections.map((item) => (
+              {data.sections.map((item) => (
                 <li key={item}>
                   <a href={`#${item}`} onClick={() => setToggle(false)}>
                     {item}

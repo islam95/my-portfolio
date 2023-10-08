@@ -1,17 +1,17 @@
-import { BsTwitter, BsInstagram } from 'react-icons/bs';
-import { FaFacebookF } from 'react-icons/fa';
+import { BsLinkedin, BsGithub } from 'react-icons/bs';
+import { MdEmail } from 'react-icons/md';
 
 const SocialMedia = () => (
   <div className="app__social">
-    <div>
-      <BsTwitter />
-    </div>
-    <div>
-      <FaFacebookF />
-    </div>
-    <div>
-      <BsInstagram />
-    </div>
+    <a href="https://www.linkedin.com/in/islamdudaev/" target="_blank" rel="noreferrer">
+      <BsLinkedin />
+    </a>
+    <a href="http://www.github.com/islam95" target="_blank" rel="noreferrer">
+      <BsGithub />
+    </a>
+    <a href="mailto:dudaev.uk+website@gmail.com">
+      <MdEmail />
+    </a>
   </div>
 );
 

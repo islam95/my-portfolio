@@ -1,3 +1,6 @@
 const sections = ['home', 'about', 'work', 'skills', 'contact'];
+const projectTags = ['Angular', 'React', 'dApp', 'Blockchain', 'All'];
 
-export default sections;
+const data = { sections, projectTags };
+
+export default data;

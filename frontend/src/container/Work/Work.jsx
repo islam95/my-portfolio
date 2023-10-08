@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 
 import { AppWrap, MotionWrap } from '../../wrapper';
 import { urlFor, sanityClient } from '../../sanity';
+import { data } from '../../constants';
 import './Work.scss';
 
 const Work = () => {
@@ -43,7 +44,7 @@ const Work = () => {
       </h2>
 
       <div className="app__work-filter">
-        {['UI/UX', 'Web App', 'Mobile App', 'React JS', 'All'].map((item, index) => (
+        {data.projectTags.map((item, index) => (
           <div key={index} onClick={() => handleWorkFilter(item)} className={`app__work-filter-item app__flex p-text ${activeFilter === item ? 'item-active' : ''}`}>
             {item}
           </div>
