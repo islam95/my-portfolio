@@ -18,9 +18,10 @@ import about03 from '../assets/about03.png';
 import about04 from '../assets/about04.png';
 
 import circle from '../assets/circle.svg';
-
 import adidas from '../assets/adidas.png';
 import nb from '../assets/nb.png';
+import profile from '../assets/profile.png';
+import angular from '../assets/angular.svg';
 
 const images = {
   email,
@@ -43,6 +44,8 @@ const images = {
   circle,
   adidas,
   nb,
+  profile,
+  angular,
 };
 
 export default images;

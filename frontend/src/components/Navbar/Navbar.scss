@@ -13,6 +13,10 @@
   border: 1px solid rgba(255, 255, 255, 0.18);
   position: fixed;
   z-index: 2;
+
+  @media screen and (min-width: 1000px) {
+    padding: 1rem 6rem;
+  }
 }
 
 .app__navbar-logo {
