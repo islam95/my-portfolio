@@ -1,80 +1,64 @@
-import React, { useState } from 'react';
-
-// import { images } from '../../constants';
+import React, { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
+import { images } from '../../constants';
 import { AppWrap, MotionWrap } from '../../wrapper';
-import { sanityClient } from '../../sanity';
 import './Footer.scss';
 
 const Footer = () => {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const { username, email, message } = formData;
+  const form = useRef();
 
-  const handleChangeInput = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = () => {
-    if (!username || !email || !message) {
-      alert('Please fill in all fields');
-      return;
-    }
-
+  const handleSubmit = (e) => {
+    e.preventDefault();
     setLoading(true);
 
-    const contact = {
-      _type: 'contact',
-      name: formData.username,
-      email: formData.email,
-      message: formData.message,
-    };
-
-    sanityClient
-      .create(contact)
-      .then(() => {
+    emailjs.sendForm(process.env.REACT_APP_EMAIL_JS_SERVICE_ID, process.env.REACT_APP_EMAIL_JS_TEMPLATE_ID, form.current, process.env.REACT_APP_EMAIL_JS_PUBLIC_KEY).then(
+      () => {
         setLoading(false);
         setIsFormSubmitted(true);
-      })
-      .catch((err) => console.log(err));
+      },
+      (error) => {
+        setLoading(false);
+        setError('Server error');
+        console.log(error.text);
+      }
+    );
   };
 
   return (
     <>
       {!isFormSubmitted && <h2 className="head-text">Take a coffee & chat with me</h2>}
-
-      {/* <div className="app__footer-cards">
-        <div className="app__footer-card ">
+      <div className="app__footer-cards">
+        <div className="app__footer-card">
           <img src={images.email} alt="email" />
-          <a href="mailto:admin@islamdudaev.ru" className="p-text">
-            admin@islamdudaev.ru
+          <a href="mailto:contact@islamdudaev.com" className="p-text">
+            contact@islamdudaev.com
           </a>
         </div>
         <div className="app__footer-card">
-          <img src={images.mobile} alt="phone" />
-          <a href="tel:+1 (123) 456-7890" className="p-text">
-            +1 (123) 456-7890
-          </a>
+          <img src={images.location} alt="location" />
+          <span className="p-text">Glasgow, United Kingdom</span>
         </div>
-      </div> */}
-
+      </div>
       {!isFormSubmitted ? (
-        <div className="app__footer-form app__flex">
+        <form className="app__footer-form app__flex" ref={form} onSubmit={handleSubmit}>
           <div className="app__flex">
-            <input className="p-text" type="text" placeholder="Your Name" name="username" value={username} onChange={handleChangeInput} />
+            <input className="p-text" type="text" placeholder="Your Name" name="user_name" required />
           </div>
           <div className="app__flex">
-            <input className="p-text" type="email" placeholder="Your Email" name="email" value={email} onChange={handleChangeInput} />
+            <input className="p-text" type="email" placeholder="Your Email" name="user_email" required />
           </div>
           <div>
-            <textarea className="p-text" placeholder="Your Message" name="message" value={message} onChange={handleChangeInput} />
+            <textarea className="p-text" placeholder="Your Message" name="message" required />
           </div>
-          <button type="button" className="p-text" onClick={handleSubmit}>
+          <button type="submit" className="p-text">
             {!loading ? 'Send Message' : 'Sending...'}
+            {error}
           </button>
-        </div>
+        </form>
       ) : (
         <div>
           <h3 className="head-text">Thank you for getting in touch!</h3>

@@ -9,7 +9,7 @@ const SocialMedia = () => (
     <a href="http://www.github.com/islam95" target="_blank" rel="noreferrer">
       <BsGithub />
     </a>
-    <a href="mailto:dudaev.uk+website@gmail.com">
+    <a href="mailto:contact@islamdudaev.com">
       <MdEmail />
     </a>
   </div>

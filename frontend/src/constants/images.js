@@ -22,6 +22,7 @@ import adidas from '../assets/adidas.png';
 import nb from '../assets/nb.png';
 import profile from '../assets/profile.png';
 import angular from '../assets/angular.svg';
+import location from '../assets/location.png';
 
 const images = {
   email,
@@ -46,6 +47,7 @@ const images = {
   nb,
   profile,
   angular,
+  location,
 };
 
 export default images;
