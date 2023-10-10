@@ -8,7 +8,6 @@ import javascript from '../assets/javascript.png';
 import node from '../assets/node.png';
 import python from '../assets/python.png';
 import react from '../assets/react.png';
-import redux from '../assets/redux.png';
 import sass from '../assets/sass.png';
 import typescript from '../assets/typescript.png';
 
@@ -35,7 +34,6 @@ const images = {
   node,
   python,
   react,
-  redux,
   sass,
   typescript,
   about01,
