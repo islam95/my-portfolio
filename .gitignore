@@ -11,8 +11,6 @@
 
 # production
 /build
-/frontend/build
-/backend/build
 
 # IDEs and editors
 /.idea
